@@ -21,15 +21,10 @@ jobs:
         id: changed-files
         uses: tj-actions/changed-files@v19
 
-      - name: List all changed files
+      - name: List all changed files and find tab
         run: |
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
             echo "$file was changed"
-          done
-
-      - name: Find tab in files
-        run: |
-          for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
             tab=`grep -P "\t" "$file" | wc -l`
-            echo "$tab"
+            echo "In the modified file $file found line with tab $tab"
           done
