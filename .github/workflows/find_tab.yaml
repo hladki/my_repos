@@ -1,9 +1,6 @@
 name: Search tab
 
 on:
-  push:
-    branches:
-      - main
   pull_request:
     branches:
       - main
@@ -11,7 +8,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: changed-files
+    name: changed-files-tabs
     steps:
       - uses: actions/checkout@v3
         with:
