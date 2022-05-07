@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: find tab in file
-      - run: |
+        run: |
           CHANGED_FILES=${git diff --name-only HEAD~ HEAD}
           for file in $CHANGED_FILES
           do
