@@ -11,7 +11,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: changed-files
+    name: find-changed-files
     steps:
       - uses: actions/checkout@v3
         with:
@@ -25,5 +25,11 @@ jobs:
         run: |
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
             echo "$file was changed"
-            echo "grep -P '\t' $files"
+          done
+
+      - name: Find tab in files
+        run: |
+          for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
+            tab=`grep -P "\t" "$file" | wc -l`
+            echo "$tab"
           done
