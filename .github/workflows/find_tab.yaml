@@ -25,5 +25,5 @@ jobs:
         run: |
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
             echo "$file was changed"
-            echo "In the modified file '$files' found line with tab `grep $'\t' $files`"
+            echo "In the modified file $files found line with tab `grep $'\t' $files`"
           done
