@@ -1,0 +1,22 @@
+name: Find tab
+
+on:
+  push:
+    branches:
+    - main
+  pull_request:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: find tab in file
+      - run: |
+          CHANGED_FILES=${git diff --name-only HEAD~ HEAD}
+          for file in $CHANGED_FILES
+          do
+          FIND_TAB=${grep $'\t' $file}
+          echo "$FIND_TAB" 
+          done
