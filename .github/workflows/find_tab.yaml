@@ -14,9 +14,9 @@ jobs:
       - uses: actions/checkout@v1
       - name: find tab in file
         run: |
-          CHANGED_FILES=$(git diff --name-only HEAD~ HEAD)
-          echo "$CHANGED_FILES" | while read files
-          do
-          TAB_FILES=$(grep $'\t' $files)
-          echo "In the modified file '$files' found line with tab '$TAB_FILES'" >report.log
-          done
+               CHANGED_FILES=$(git diff --name-only HEAD~ HEAD)
+               echo "$CHANGED_FILES" | while read files
+               do
+               TAB_FILES=$(grep $'\t' $files)
+               echo "In the modified file '$files' found line with tab '$TAB_FILES'" >report.log
+               done
